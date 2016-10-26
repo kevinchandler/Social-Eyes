@@ -1,0 +1,31 @@
+{
+  "name": "socialeyes",
+  "version": "1.0.0",
+  "description": "Look up social posts by user handle",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kevinchandler/Social-Eyes.git"
+  },
+  "keywords": [
+    "Social",
+    "Posts",
+    "Twitter",
+    "Instagram",
+    "Reddit"
+  ],
+  "author": "Kevin Chandler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinchandler/Social-Eyes/issues"
+  },
+  "homepage": "https://github.com/kevinchandler/Social-Eyes#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0"
+  }
+}
