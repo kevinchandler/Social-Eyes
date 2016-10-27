@@ -11,8 +11,10 @@ module.exports = {
         error: 'username not provided'
       })
     } else {
-      let userInfo = SERVICES.userLookup(username);
-      res.json(userInfo);
+      SERVICES.userLookup(username, (err, userPosts) => {
+        if ( err ) { return res.status(500).send(err) }
+        res.json(userPosts)
+      });
     }
   }
 }
