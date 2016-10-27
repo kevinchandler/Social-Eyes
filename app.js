@@ -3,10 +3,11 @@
 const express = require('express'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
-    app = express(),
-    PORT = process.env.PORT || 3000;
+    app = express();
 
-const api = require('./routes/api');
+const PORT = process.env.PORT || 3000,
+      SERVICES = require('./js/services'),
+      api = require('./routes/api');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -21,7 +22,19 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/api/lookup', api.lookup);
+app.get('(?:/api)?/lookup/:username', (req, res) => {
+  // TODO respond json on api
+  let username = req.params.username;
+  SERVICES.userLookup(username, (err, userPosts) => {
+    if ( err ) { return res.status(500).send(err) }
+
+    res.render('lookup', {
+      username: username,
+      reddit: userPosts.reddit
+    })
+  });
+});
+
 
 app.listen(PORT, () => {
   console.log(`App listening on ${PORT}`)

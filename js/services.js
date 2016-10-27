@@ -38,6 +38,10 @@ let redditLookup = (username, cb) => {
       let posts = JSON.parse(body),
           userPosts = [];
 
+      if ( !posts['data'] || !posts['data']['children'] ) {
+          return cb(new Error('no posts'))
+      }
+
       posts['data']['children'].forEach( (post) => {
         if ( !post['data'] ) { return }
 
