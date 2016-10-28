@@ -2,4 +2,14 @@ html
   head
     title= message
   body
-    p= message
+    h3= message
+    input(type='text', id='handle' placeholder='User Handle')
+    button(type='submit' id='submit') Submit
+    script.
+      document.getElementById('submit').onclick = () => {
+        let username = document.getElementById('handle').value;
+        if ( !username )
+          alert('Please enter a user handle to look up')
+        else
+          location.href = `lookup/${username}`
+      };
