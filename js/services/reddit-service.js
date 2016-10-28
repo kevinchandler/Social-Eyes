@@ -3,25 +3,15 @@
 const request = require('request');
 
 module.exports = {
-
-  // TODO
-  // response is tightly coupled w/ reddit atm
-  userLookup: (username, apiResCallback) => {
-    let posts = {
-      reddit: null,
-      twitter: null,
-      instagram: null
-    }
-    redditLookup(username, (err, redditPostInfo) => {
+  lookup: (username, apiResCallback) => {
+    lookup(username, (err, redditPostInfo) => {
       if ( err ) { return apiResCallback(err) }
-      posts.reddit = redditPostInfo;
-      apiResCallback(null, posts)
+      apiResCallback(null, redditPostInfo)
     })
   }
-
 }
 
-let redditLookup = (username, cb) => {
+let lookup = (username, cb) => {
   let url = `https://reddit.com/u/${username}.json`,
       userInfo;
 

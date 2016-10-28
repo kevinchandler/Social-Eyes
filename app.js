@@ -5,8 +5,10 @@ const express = require('express'),
     cookieParser = require('cookie-parser'),
     app = express();
 
+require('dotenv').config()
+
 const PORT = process.env.PORT || 3000,
-      SERVICES = require('./js/services'),
+      LOOKUP = require('./js/lookup'),
       api = require('./routes/api');
 
 app.use(express.static('public'));
@@ -25,12 +27,14 @@ app.get('/', (req, res) => {
 app.get('(?:/api)?/lookup/:username', (req, res) => {
   // TODO respond json on api
   let username = req.params.username;
-  SERVICES.userLookup(username, (err, userPosts) => {
+  LOOKUP.userLookup(username, (err, userPosts) => {
     if ( err ) { return res.status(500).send(err) }
 
     res.render('lookup', {
       username: username,
-      reddit: userPosts.reddit
+      reddit: userPosts.reddit,
+      twitter: userPosts.twitter,
+      instagram: userPosts.instagram
     })
   });
 });

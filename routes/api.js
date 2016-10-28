@@ -1,6 +1,6 @@
 'use strict'
 
-const SERVICES = require('../js/services.js');
+const LOOKUP = require('../js/lookup');
 
 module.exports = {
 

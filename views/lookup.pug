@@ -3,7 +3,7 @@ html
   title= username + ': Social Lookup'
   body
     h3= username + ': Reddit'
-    - for (post in reddit)
+    - for ( post in reddit )
       ul= 'Author: ' + reddit[post].author
       - if (reddit[post].title)
         ul= 'Title: ' + reddit[post].title
@@ -12,3 +12,5 @@ html
       ul= 'Date: ' + reddit[post].date
       - if (post + 1 !== reddit.length)
         hr
+    - for ( post in twitter )
+      ul= twitter[post]
