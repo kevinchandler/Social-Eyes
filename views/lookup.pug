@@ -4,11 +4,11 @@ html
   body
     h3= username + ': Reddit'
     - for (post in reddit)
-      ul= "Author: " + reddit[post].author
+      ul= 'Author: ' + reddit[post].author
       - if (reddit[post].title)
-        ul= "Title: " + reddit[post].title
-      ul= "Body: " + reddit[post].body
-      ul= "Subreddit: " + reddit[post].subreddit
-      ul= "Date: " + reddit[post].date
-      - if (post + 1 != reddit.length)
+        ul= 'Title: ' + reddit[post].title
+      ul= 'Body: ' + reddit[post].body
+      ul= 'Subreddit: ' + reddit[post].subreddit
+      ul= 'Date: ' + reddit[post].date
+      - if (post + 1 !== reddit.length)
         hr
